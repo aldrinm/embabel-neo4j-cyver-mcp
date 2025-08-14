@@ -1,6 +1,4 @@
 
-embabel-agent-api/src/main/resources/mcp/**
-
 /target/**
 */target/**
 */*/target/**
@@ -9,3 +7,5 @@ embabel-agent-api/src/main/resources/mcp/**
 .idea/**
 
 **/*.log
+
+.env
