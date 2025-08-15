@@ -52,7 +52,6 @@ public class GraphAgent {
                                 """,
                         userInput.getContent(), schema).trim(),
                         CypherStatementRequest.class);
-//        return new CypherStatementRequest("MATCH (n:Minifig) return count(n.fig_num)", Map.of());
     }
 
     private String getSchema() {
@@ -106,7 +105,7 @@ public class GraphAgent {
 
         if (syntaxValidationResult.isValid()) {
             //only bother with these next validations is the syntax is correct
-            schemaValidationResult = validateCypherWithSchemaInternal(cypherStatementRequest.cypher());
+            schemaValidationResult = validateCypherSchema(cypherStatementRequest.cypher());
             propertiesValidationResult = validateCypherProperties(cypherStatementRequest.cypher());
         }
         return new ValidationReport(syntaxValidationResult, schemaValidationResult, propertiesValidationResult);
@@ -116,7 +115,7 @@ public class GraphAgent {
         return validateCypherWithTool(cypherStatement, "validate_cypher_syntax");
     }
 
-    private CyverSyntaxValidatonResult validateCypherWithSchemaInternal(String cypherStatement) {
+    private CyverSyntaxValidatonResult validateCypherSchema(String cypherStatement) {
         return validateCypherWithTool(cypherStatement, "schema_validator");
     }
 
